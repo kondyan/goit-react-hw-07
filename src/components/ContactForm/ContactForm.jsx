@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import numberNormalize from "../../util/numberNormalize.js";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
+import { addContact } from "../../redux/operations";
 
 const ContactsSchema = Yup.object().shape({
   name: Yup.string()
@@ -31,7 +31,6 @@ const ContactForm = () => {
   const handleSubmit = ({ ...values }, actions) => {
     dispatch(
       addContact({
-        id: crypto.randomUUID(),
         name: values.name,
         number: values.number,
       })
